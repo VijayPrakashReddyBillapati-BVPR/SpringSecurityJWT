@@ -37,6 +37,6 @@ public class EmployeeRestResource {
     public ResponseEntity<String> getUser(@PathVariable String email) {
 		
     	Optional<User> user = userRepository.findByEmail(email);
-        return new ResponseEntity<String>("<h1>welcome "+ user.get().getUserName()+"<h1>", HttpStatus.OK);
+        return new ResponseEntity<String>("<h1>welcome "+ user.get().getUsername()+"<h1>", HttpStatus.OK);
     }
 }

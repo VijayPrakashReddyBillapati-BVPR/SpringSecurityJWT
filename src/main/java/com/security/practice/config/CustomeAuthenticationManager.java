@@ -4,8 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
-import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -15,9 +14,8 @@ import org.springframework.stereotype.Service;
 
 import com.security.practice.model.UserInfo;
 
-//@Service
-//@Configurable
-public class CustomAuthenticationProvider implements AuthenticationProvider {
+@Service
+public class CustomeAuthenticationManager implements AuthenticationManager {
 
 	@Autowired
 	private UserDetailsServiceImpl userDetailsService;
@@ -44,11 +42,6 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(userEmail); 
 		return matcher.matches();
-	}
-
-	@Override
-	public boolean supports(Class<?> authentication) {
-		return UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication);
 	}
 
 }
